@@ -24,6 +24,7 @@ export const fileUpload = async (file) => {
 		} else {
 			throw await resp.json();
 		}
+		// Catch the Error and show the message
 	} catch (err) {
 		throw err;
 	}

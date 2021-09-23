@@ -10,25 +10,35 @@ import { PrivateRoute } from './PrivateRoutes';
 import { startLoadingNotes } from '../actions/notes';
 
 export const AppRouter = () => {
+	// Dispatch instance
 	const dispatch = useDispatch();
 
+	// States
 	const [checking, setChecking] = useState(true);
 	const [isLogged, setIsLogged] = useState(false);
 
+	// Effect if user credentials has changed
 	useEffect(() => {
+		// Connection to firebase
 		firebase.auth().onAuthStateChanged(async (user) => {
+			// If there is an user it get its id
 			if (user?.uid) {
+				// Dispatch the new user credentials
 				dispatch(login(user.uid, user.displayName));
+				// Set logged as true
 				setIsLogged(true);
+				// Dispatch the action to get the user notes
 				dispatch(startLoadingNotes(user.uid));
+				// If not it sets logged as false
 			} else {
 				setIsLogged(false);
 			}
-
+			// Set checking state as false to stop loading spinner gif
 			setChecking(false);
 		});
 	}, [dispatch, setChecking, setIsLogged]);
 
+	// If checking it shows the loading spinner gif
 	if (checking) {
 		return (
 			<img

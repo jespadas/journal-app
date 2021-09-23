@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { JournalEntry } from './JournalEntry';
 
 export const JournalEntries = () => {
+	// Get the notes from state.notes.notes
 	const { notes } = useSelector((state) => state.notes);
 
 	return (

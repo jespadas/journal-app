@@ -5,15 +5,21 @@ import { startNewNote } from '../../actions/notes';
 import { JournalEntries } from './JournalEntries';
 
 export const Sidebar = () => {
+	// Get the name from state.auth.name
 	const { name } = useSelector((state) => state.auth);
 
+	// Set dispatch to use it
 	const dispatch = useDispatch();
 
+	// Handles the logout onCLick
 	const handleLogout = () => {
+		// Dispatch the start of logout action
 		dispatch(startLogout());
 	};
-
+	
+	// Handles the new entry onClick
 	const handleNewEntry = () => {
+		// Dispatch the start of adding a new note action
 		dispatch(startNewNote());
 	};
 

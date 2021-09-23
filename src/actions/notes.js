@@ -5,6 +5,7 @@ import { fileUpload } from '../helpers/fileUpload';
 import { loadNotes } from '../helpers/loadNotes';
 import { types } from '../types/types';
 
+// Action to post a new note
 export const startNewNote = () => {
 	return async (dispatch, getState) => {
 		// Get the user id credential
@@ -94,8 +95,9 @@ export const refreshNote = (id, note) => ({
 // Upload the selected file
 export const startUploading = (file) => {
 	return async (dispatch, getState) => {
+		// Get the active note data
 		const { active: activeNote } = getState().notes;
-
+		// Message
 		Swal.fire({
 			title: 'Uploading',
 			text: 'Please wait...',
@@ -104,18 +106,22 @@ export const startUploading = (file) => {
 				Swal.showLoading();
 			},
 		});
-
+		// Save the uploaded file in variable
 		const fileUrl = await fileUpload(file);
+		// Updates de active note url value with the new one
 		activeNote.url = fileUrl;
-
+		// Dispatch the new value
 		dispatch(startSaveNote(activeNote));
-
+		// End of message
 		Swal.close();
 	};
 };
 
+
+// Start deleting action
 export const startDeleting = (id) => {
 	return async (dispatch, getState) => {
+		// Message
 		Swal.fire({
 			title: 'Deleting',
 			text: 'Please wait...',
@@ -124,23 +130,24 @@ export const startDeleting = (id) => {
 				Swal.showLoading();
 			},
 		});
-
+		// Get the user id credential
 		const uid = getState().auth.uid;
-
+		// Deletes the note from data base
 		await db.doc(`${uid}/journal/notes/${id}`).delete();
-
 		// If everything is ok, delete the note from store
 		dispatch(deleteNote(id));
-
+		// End of message
 		Swal.close();
 	};
 };
 
+// It send the id from the note selected to delete
 export const deleteNote = (id) => ({
 	type: types.notesDelete,
 	payload: id,
 });
 
+// Action to flush the notes data
 export const noteLogout = () => ({
 	type: types.notesLogoutCleaning,
 });

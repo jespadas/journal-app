@@ -5,6 +5,7 @@ import { NothingSelected } from './NothingSelected';
 import { Sidebar } from './Sidebar';
 
 export const JournalScreen = () => {
+	// Get the active from state.notes.active
 	const { active } = useSelector((state) => state.notes);
 
 	return (

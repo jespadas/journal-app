@@ -51,6 +51,7 @@ export const notesReducer = (state = initialState, action) => {
 				notes: [],
 				active: null,
 			};
+		// Default type
 		default:
 			return state;
 	}
