@@ -13,37 +13,43 @@ export const RegistrerScreen = () => {
 	// Get the msgError state data from state.ui.msgError
 	const { msgError } = useSelector((state) => state.ui);
 
-  // Custom hook to manage the form
-	const [formValues, handleInputChange] = useForm({});
+	// Custom hook to manage the form
+	const [formValues, handleInputChange] = useForm({
+		name: '',
+		email: '',
+		password: '',
+		confirmPass: '',
+	});
 
-  // Destructuring the data in formValues to obtain
+	// Destructuring the data in formValues to obtain
 	// email and password, name and password confirmation
 	const { name, email, password, confirmPass } = formValues;
 
-  // Handles the register submit
+	// Handles the register submit
 	const handleRegister = (e) => {
-    // Prevents the browser refresh
+		// Prevents the browser refresh
 		e.preventDefault();
-    // Checks if form is valid
-		if (isFormValid());
-    // If ok it dispatch the action to login with the 
-    // form submited data
-		dispatch(startRegisterWithEmailPasswordName(email, password, name));
+		// Checks if form is valid
+		if (isFormValid()) {
+			// If ok it dispatch the action to login with the
+			// form submited data
+			dispatch(startRegisterWithEmailPasswordName(email, password, name));
+		}
 	};
 
-  // Verifys it data in form is ok, it returns false if not and true if is ok
+	// Verifys it data in form is ok, it returns false if not and true if is ok
 	const isFormValid = () => {
-    // If there is no name it shows an Error message
+		// If there is no name it shows an Error message
 		if (name.trim().length === 0) {
 			dispatch(setError('Name is required'));
 			return false;
-      // If there is no email correct sintax it shows and
-      // Error message
+			// If there is no email correct sintax it shows and
+			// Error message
 		} else if (!validator.isEmail(email)) {
 			dispatch(setError('Email is not valid'));
 			return false;
-      // If the password and its confirmation are not equals or
-      // dont have at least 5 characters shows an Error message
+			// If the password and its confirmation are not equals or
+			// dont have at least 5 characters shows an Error message
 		} else if (password !== confirmPass || password.length < 5) {
 			dispatch(
 				setError(
@@ -52,7 +58,7 @@ export const RegistrerScreen = () => {
 			);
 			return false;
 		}
-    // Dispatch action to remove the Error message
+		// Dispatch action to remove the Error message
 		dispatch(removeError());
 		return true;
 	};

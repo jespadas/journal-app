@@ -12,7 +12,12 @@ export const LoginScreen = () => {
 	const { loading } = useSelector((state) => state.ui);
 
 	// Custom hook to manage the form
-	const [formValues, handleInputChange] = useForm({});
+	const [formValues, handleInputChange] = useForm({
+		name: '',
+		email: '',
+		password: '',
+		password2: '',
+	});
 
 	// Destructuring the data in formValues to obtain
 	// email and password
