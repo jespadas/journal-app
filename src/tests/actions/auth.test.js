@@ -74,11 +74,5 @@ describe('Tests in auth actions', () => {
         });
 
     });
-
-    test('should ', () => {
-        
-    })
-    
-    
     
 });
