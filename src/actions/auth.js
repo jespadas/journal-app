@@ -11,7 +11,7 @@ export const startLoginEmailPassword = (email, password) => {
     // Dispatch the loader spinner
     dispatch(startLoading());
     // Connection into firebase and auth
-    firebase
+    return firebase
       .auth()
       .signInWithEmailAndPassword( email, password )
       // If ok it dispatch the login action with user credentials
