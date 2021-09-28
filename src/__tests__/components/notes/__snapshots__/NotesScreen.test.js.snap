@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests in <NotesScreen /> should be displayed correctly 1`] = `
+<div
+  className="notes__main-content"
+>
+  <div
+    className="notes__appbar"
+  >
+    <span>
+      Jan / 1 / 1970
+    </span>
+    <input
+      id="fileSelector"
+      name="file"
+      onChange={[Function]}
+      style={
+        Object {
+          "display": "none",
+        }
+      }
+      type="file"
+    />
+    <div>
+      <button
+        className="btn"
+        onClick={[Function]}
+      >
+        Picture
+      </button>
+      <button
+        className="btn"
+        onClick={[Function]}
+      >
+        Save
+      </button>
+    </div>
+  </div>
+  <div
+    className="notes__content"
+  >
+    <input
+      autoFocus={true}
+      className="notes__input-title"
+      name="title"
+      onChange={[Function]}
+      placeholder="Entry your title"
+      type="text"
+      value="Test title"
+    />
+    <textarea
+      className="notes__textarea"
+      name="body"
+      onChange={[Function]}
+      placeholder="Entry content"
+      value="Test body"
+    />
+  </div>
+  <button
+    className="btn btn-danger"
+    onClick={[Function]}
+  >
+    Delete
+  </button>
+</div>
+`;
