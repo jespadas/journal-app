@@ -4,10 +4,10 @@ import { MemoryRouter } from 'react-router-dom';
 import { mount } from 'enzyme';
 import '@testing-library/jest-dom';
 
-// It is a mock store for testing Redyx async action creators and middlewares
-import thunk from 'redux-thunk';
+// It is a mock store for testing Redux async action creators and middlewares
 import configureStore from 'redux-mock-store';
 // React middleware for Redux.
+import thunk from 'redux-thunk';
 
 import { LoginScreen } from '../../../components/auth/LoginScreen';
 import {
